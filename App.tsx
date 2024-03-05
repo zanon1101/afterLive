@@ -10,15 +10,15 @@ const App = () => {
 	const [showForm, setShowForm] = useState(false);
 
 	const handlePress = () => {
-		setShowForm((prevForm) => !prevForm);
+		setShowForm(true);
 	};
 
 	return (
 		<SafeAreaProvider>
 			<View style={styles.container}>
-				<Text>Press to add an event</Text>
-				<StatusBar style="auto" />
+				<Text>Add an event</Text>
 				{showForm ? <AddEventForm /> : <AddEventButton onPress={handlePress} />}
+				<StatusBar style="auto" />
 			</View>
 		</SafeAreaProvider>
 	);

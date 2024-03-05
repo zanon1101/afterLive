@@ -9,7 +9,7 @@ import SubmitButton from "../buttons/submit-btn/submit-btn";
 type AndroidMode = "date" | "time" | "datetime";
 const pickerMode: AndroidMode = "date";
 
-const AddEventForm = ({}) => {
+const AddEventForm = () => {
 	const [artist, setArtist] = useState("");
 	const [venue, setVenue] = useState("");
 	const [city, setCity] = useState("");
@@ -17,8 +17,15 @@ const AddEventForm = ({}) => {
 	const [eventDate, setDate] = useState(new Date());
 	const [show, setShow] = useState(false);
 
-	const handleSubmit = (event) => {
+	const handleSubmit = () => {
 		Alert.alert("Concert submitted!");
+		clearForm();
+	};
+
+	const clearForm = () => {
+		setArtist("");
+		setVenue("");
+		setCity("");
 	};
 
 	const showDatepicker = () => {
@@ -31,14 +38,12 @@ const AddEventForm = ({}) => {
 		setDate(currentDate);
 	};
 
-	const submit = (event) => {};
-
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.title}>Tell us everything!</Text>
 			<TextInput style={styles.input} onChangeText={setArtist} value={artist} placeholder="Sleep Token" />
-			<TextInput style={styles.input} onChangeText={setVenue} value={venue} placeholder="Melbourne, VIC, Australia" />
-			<TextInput style={styles.input} onChangeText={setCity} value={city} placeholder="Northcote Theatre" />
+			<TextInput style={styles.input} onChangeText={setCity} value={city} placeholder="Melbourne, Australia" />
+			<TextInput style={styles.input} onChangeText={setVenue} value={venue} placeholder="Northcote Theatre" />
 			<Button onPress={showDatepicker} title="Which Date?" />
 			{show && <DateTimePicker value={eventDate} mode={pickerMode} onChange={onChange} display="default" />}
 			<SubmitButton onPress={handleSubmit} title="Submit!" />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styles from "./submit-btn-styles";
 
 const SubmitButton = ({ onPress, title }) => {
