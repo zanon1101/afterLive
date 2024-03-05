@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const AddShowButtonStyle = StyleSheet.create({
+const styles = StyleSheet.create({
 	button: {
 		backgroundColor: "transparent", // Circle background color, transparent for just the ring
 		borderColor: "black", // Color of the ring
@@ -18,4 +18,4 @@ const AddShowButtonStyle = StyleSheet.create({
 	},
 });
 
-export default AddShowButtonStyle;
+export default styles;

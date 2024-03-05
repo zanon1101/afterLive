@@ -1,23 +1,26 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import AddShowButton from "./components/buttons/add-show-btn";
+import AddEventButton from "./components/buttons/add-event-btn/add-event-btn";
+import AddEventForm from "./components/forms/add-event-form";
 
 const App = () => {
-	const [showCount, setShowCount] = useState(0);
+	const [showForm, setShowForm] = useState(false);
 
-	const incrementShowCount = () => {
-		setShowCount((prevCount) => prevCount + 1);
+	const handlePress = () => {
+		setShowForm((prevForm) => !prevForm);
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text>Number of shows: {showCount}</Text>
-			<Text>Press to add a show</Text>
-			<StatusBar style="auto" />
-			<AddShowButton showCount={showCount} onPress={incrementShowCount} />
-		</View>
+		<SafeAreaProvider>
+			<View style={styles.container}>
+				<Text>Press to add an event</Text>
+				<StatusBar style="auto" />
+				{showForm ? <AddEventForm /> : <AddEventButton onPress={handlePress} />}
+			</View>
+		</SafeAreaProvider>
 	);
 };
 
